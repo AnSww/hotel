@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-postes = [
+posts = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -48,13 +48,13 @@ postes = [
 # Create your views here.
 def index(request):
     template = 'blog/index.html'
-    context = {'posts': reversed(postes)}
+    context = {'posts': reversed(posts)}
     return render(request, template, context)
 
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': postes[id]}
+    context = {'post': posts[id]}
     return render(request, template, context)
 
 
