@@ -8,13 +8,13 @@ from tests.conftest import try_get_url
 
 @pytest.mark.parametrize(
     'url, template', [
-        ('', 'blog/index.html'),
-        ('posts/0/', 'blog/detail.html'),
-        ('posts/1/', 'blog/detail.html'),
-        ('posts/2/', 'blog/detail.html'),
-        ('category/category_slug/', 'blog/category.html'),
-        ('pages/about/', 'pages/about.html'),
-        ('pages/rules/', 'pages/rules.html'),
+        ('', 'blog/index.static'),
+        ('posts/0/', 'blog/detail.static'),
+        ('posts/1/', 'blog/detail.static'),
+        ('posts/2/', 'blog/detail.static'),
+        ('category/category_slug/', 'blog/category.static'),
+        ('pages/about/', 'pages/about.static'),
+        ('pages/rules/', 'pages/rules.static'),
     ]
 )
 def test_page_templates(client, url, template):
