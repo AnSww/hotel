@@ -1,6 +1,3 @@
-from lib2to3.fixes.fix_input import context
-from tempfile import template
-
 from django.shortcuts import render
 
 
