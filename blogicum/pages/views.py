@@ -2,10 +2,10 @@ from django.shortcuts import render
 
 
 def about(request):
-    template = 'static/about.html'
+    template = 'pages/about.html'
     return render(request, template)
 
 
 def rules(request):
-    template = 'static/rules.html'
+    template = 'pages/rules.html'
     return render(request, template)
