@@ -1,3 +1,5 @@
+from zoneinfo import available_timezones
+
 from django.shortcuts import render
 from django.http import Http404
 
@@ -52,6 +54,8 @@ post_404 = {
     'text': 'not found',
 }
 
+available_id = {posts[i]['id']: i for i in range(len(posts))}
+
 
 # Create your views here.
 def index(request):
@@ -62,13 +66,10 @@ def index(request):
 
 def post_detail(request, post_id):
     template = 'blog/detail.html'
-    for i in range(len(posts)):  # поиск запрашиваемого id
-        if posts[i]['id'] == post_id:
-            context = {'post': posts[i]}
-            break
-    else:  # если не нашли - отображается заглушка
+    if post_id in available_id:
+        context = {'post': posts[available_id[post_id]]}
+    else:
         raise Http404(f'Post {post_id} Not Found')
-        context = {'post': post_404}
     return render(request, template, context)
 
 
