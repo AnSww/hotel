@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import Http404
 
 posts = [
     {
@@ -44,6 +44,14 @@ posts = [
     },
 ]
 
+post_404 = {
+    'id': -1,
+    'location': 'not found',
+    'date': 'not found',
+    'category': 'notfound',
+    'text': 'not found',
+}
+
 
 # Create your views here.
 def index(request):
@@ -52,9 +60,15 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
+    for i in range(len(posts)):  # поиск запрашиваемого id
+        if posts[i]['id'] == post_id:
+            context = {'post': posts[i]}
+            break
+    else:  # если не нашли - отображается заглушка
+        raise Http404(f'Post {post_id} Not Found')
+        context = {'post': post_404}
     return render(request, template, context)
 
 
