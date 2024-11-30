@@ -1,7 +1,6 @@
-from zoneinfo import available_timezones
-
 from django.shortcuts import render
 from django.http import Http404
+
 
 posts = [
     {
@@ -46,18 +45,9 @@ posts = [
     },
 ]
 
-post_404 = {
-    'id': -1,
-    'location': 'not found',
-    'date': 'not found',
-    'category': 'notfound',
-    'text': 'not found',
-}
-
 available_id = {posts[i]['id']: i for i in range(len(posts))}
 
 
-# Create your views here.
 def index(request):
     template = 'blog/index.html'
     context = {'posts': reversed(posts)}
