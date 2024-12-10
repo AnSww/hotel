@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ reservation.category }}. {{ reservation.date_in }}{% endblock %}
+
+{% block content %}
+      <div class="container py-5">
+        <article>
+          <ul>
+            <li>
+              Категория: {{ reservation.category }}
+            </li>
+            <li>
+              Количество комнат: {{ reservation.rooms }}
+            </li>
+            <li>
+              Дата заезда в брони | фактическая - {{ reservation.date_in }} |
+              {% if reservation.date_in_fact %}
+                  {{ reservation.date_in_fact }}
+              {% else %}
+                  еще не заехали
+              {% endif %}
+            </li>
+            <li>
+              Дата выезда в брони | фактическая - {{ reservation.date_out }} |
+              {% if reservation.date_out_fact %}
+                  {{ reservation.date_out_fact }}
+              {% else %}
+                  еще не выехали
+              {% endif %}
+            </li>
+            <li>
+              Стоимость: {{ cost }}
+            </li>
+          </ul>         
+          <p>
+            Дополнительная информация <br>{{ reservation.bonus }}
+          </p>
+          <a href="{% url 'blog:delete_resv' reservation.id %}">Отменить бронь</a>
+          <a href="{% url 'blog:chek_in' reservation.id %}">Указать заезд</a>
+          <a href="{% url 'blog:chek_out' reservation.id %}">Указать выезд</a>
+        </article>                
+      </div>
+{% endblock %}
+

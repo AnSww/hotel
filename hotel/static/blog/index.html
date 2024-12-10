@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Лента записей{% endblock %}
+  {% block content %}
+      <div class="container py-5">
+        <h1>Актуальные брони</h1>
+        <hr>
+        {% for reservation in reservations %}
+          <article>
+            <ul>
+              <li>
+                Категория: {{ reservation.category }}
+              </li>
+              <li>
+                Количество комнат: {{ reservation.rooms }}
+              </li>
+              <li>
+                Дата заезда: {{ reservation.date_in }}
+              </li>
+            </ul>
+            <p>
+              Доп.инфо :
+            {% if reservation.bonus %}
+                {{ reservation.bonus|truncatewords:10}}
+            {% else %}
+                Отсутствует
+            {% endif %}
+            </p>
+            <a href="{% url 'blog:reservation' reservation.id %}">Панель управления бронью</a>
+          </article>
+          {% if not forloop.last %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endblock %}
+
