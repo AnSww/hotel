@@ -36,9 +36,9 @@
           <p>
             Дополнительная информация <br>{{ reservation.bonus }}
           </p>
-          <a href="{% url 'blog:delete_resv' reservation.id %}">Отменить бронь</a>
-          <a href="{% url 'blog:chek_in' reservation.id %}">Указать заезд</a>
-          <a href="{% url 'blog:chek_out' reservation.id %}">Указать выезд</a>
+          <a href="{% url 'reservation:delete_resv' reservation.id %}">Отменить бронь</a>
+          <a href="{% url 'reservation:chek_in' reservation.id %}">Указать заезд</a>
+          <a href="{% url 'reservation:chek_out' reservation.id %}">Указать выезд</a>
         </article>                
       </div>
 {% endblock %}

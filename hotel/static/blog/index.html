@@ -27,7 +27,7 @@
                 Отсутствует
             {% endif %}
             </p>
-            <a href="{% url 'blog:reservation' reservation.id %}">Панель управления бронью</a>
+            <a href="{% url 'reservation:reservation' reservation.id %}">Панель управления бронью</a>
           </article>
           {% if not forloop.last %}
             <hr>

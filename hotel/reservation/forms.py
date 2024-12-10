@@ -1,5 +1,5 @@
 from django import forms
-from blog.models import Booking
+from reservation.models import Booking
 
 
 class Book_in(forms.ModelForm):

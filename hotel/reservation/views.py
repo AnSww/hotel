@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from datetime import datetime
-from blog.models import Booking
-from blog.forms import Book_in, Book_out
+from reservation.models import Booking
+from reservation.forms import Book_in, Book_out
 
 
 
